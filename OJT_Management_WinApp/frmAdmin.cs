@@ -32,6 +32,8 @@ namespace OJT_Management_WinApp
                 var admins = context.Admins.ToList();
                 dgvAdmin.DataSource = admins;
             }
+            frmStudent frmStudent = new frmStudent();
+            frmStudent.userAdmin = admin;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

@@ -18,7 +18,7 @@ namespace OJT_Management_WinApp
     public partial class frmLogin : Form
     {
         public IStudentRepo studentRepo;
-        public static Student student;
+        public static Student loginStudent;
         public static Admin loginAdmin;
 
         public frmLogin()
@@ -75,11 +75,12 @@ namespace OJT_Management_WinApp
                 }
                 else if (cbOption.SelectedItem == "Student")
                 {
-                    student = studentRepo.GetStudentByEmailAndPassword(Email, Password);
-                    if (student != null)
+                    loginStudent = studentRepo.GetStudentByEmailAndPassword(Email, Password);
+                    if (loginStudent != null)
                     {
                         MessageBox.Show("Login Successful");
                         frmStudent studentForm = new frmStudent();
+                        frmStudent.userStudent = loginStudent;
                         studentForm.Show();
                         this.Hide();
                     }

@@ -63,7 +63,21 @@ namespace Library.DAOs
             }
         }
 
-        //Get Student by Email and Password
+        //Get Student by Email
+        public Student GetStudentByEmail(string studentEmail)
+        {
+            try
+            {
+                var context = new OJT_ManagementContext();
+                return context.Students.Where(x => x.StudentEmail == studentEmail).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        //Get Student by Email and Password 
         public Student GetStudentByEmailAndPassword(string studentEmail, string studentPassword)
         {
             try
@@ -82,7 +96,7 @@ namespace Library.DAOs
         {
             try
             {
-                if (GetStudentByEmailAndPassword(student.StudentEmail, student.StudentPassword) != null)
+                if (GetStudentByEmail(student.StudentEmail) != null && GetStudentByID(student.StudentId) != null)
                 {
                     throw new Exception("Student already exists");
                 }

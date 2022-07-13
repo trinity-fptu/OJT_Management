@@ -22,6 +22,8 @@ namespace Library.Repositories.StudentRepo
 
         public Student GetStudentByID(int studentId)
             => studentDAO.GetStudentByID(studentId);
+        public Student GetStudentByEmail(string studentEmail)
+            => studentDAO.GetStudentByEmail(studentEmail);
         public Student GetStudentByEmailAndPassword(string studentEmail, string studentPassword)
             => studentDAO.GetStudentByEmailAndPassword(studentEmail, studentPassword);
         public void AddStudent(Student student)
